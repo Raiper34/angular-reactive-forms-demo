@@ -1,0 +1,9 @@
+<h1>2. Form Group</h1>
+<form [formGroup]="loginForm" (ngSubmit)="submit()"> <!-- Connection -->
+  Name: <input type="text" formControlName="name">
+  Password <input type="password" formControlName="password">
+  <br>
+  <button type="button" (click)="getName()">Get name</button> <!-- need to be button -->
+  <button type="button" (click)="reset()">Reset</button>
+  <button>Submit</button> <!-- default type is submit -->
+</form>

@@ -1,0 +1,13 @@
+<h1>5. Dynamic form group</h1>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  Name: <input type="text" formControlName="name" />
+  Password <input type="password" formControlName="password" />
+  <br>
+  Do you have dog? <input type="checkbox" formControlName="hasDog" />
+  <div formGroupName="dog" *ngIf="loginForm.get('hasDog').value"> <!-- Show only when there is dog form group, otherwise error -->
+    Dog name: <input type="text" formControlName="name" />
+    Dog age <input type="number" formControlName="age" />
+  </div>
+  <br>
+  <button [disabled]="loginForm.invalid">Submit</button> <!-- default type is submit -->
+</form>

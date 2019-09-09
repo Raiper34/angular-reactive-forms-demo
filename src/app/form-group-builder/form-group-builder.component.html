@@ -1,0 +1,13 @@
+<h1>3. Form Group - builder</h1>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  Name: <input type="text" formControlName="name" />
+  Password <input type="password" formControlName="password" />
+  <div formGroupName="more"> <!-- NESTED -->
+    Age: <input type="number" formControlName="age" />
+  </div>
+  <br>
+  <button type="button" (click)="getAge()">Get name</button> <!-- need to be button -->
+  <button type="button" (click)="reset()">Reset</button>
+  <button type="button" (click)="patch()">Patch</button>
+  <button>Submit</button> <!-- default type is submit -->
+</form>

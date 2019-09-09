@@ -1,0 +1,15 @@
+<h1>6. Dynamic form group</h1>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  Name: <input type="text" formControlName="name" />
+  Password <input type="password" formControlName="password" />
+  <div *ngFor="let dog of loginForm.get('dogs').controls; let i = index">
+    <div [formGroup]="dog">
+      Dog {{i}} name: <input type="text" formControlName="name" />
+      Dog {{i}} age <input type="number" formControlName="age" />
+      <button type="button" (click)="removeDog(i)">Remove</button>
+    </div>
+  </div>
+  <br/>
+  <button (click)="addDog()" type="button">Add</button>
+  <button [disabled]="loginForm.invalid">Submit</button>
+</form>

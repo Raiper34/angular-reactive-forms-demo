@@ -1,0 +1,17 @@
+<h1>4. Form Group - validation</h1>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  Name: <input type="text" formControlName="name" /> <span *ngIf="loginForm.get('name').errors?.required">Name is required.</span>
+  <br>
+  Password <input type="password" formControlName="password" />
+  <span *ngIf="loginForm.get('password').errors?.required">Password is required.</span>
+  <span *ngIf="loginForm.get('password').errors?.minlength">Password need to more than 5 characters length.</span>
+  <br>
+  <div formGroupName="more">
+    Age: <input type="number" formControlName="age" /> <span *ngIf="loginForm.get('more').get('age').errors?.pattern">Age need to be number.</span>
+    <br>
+    Email: <input type="text" formControlName="mail" /> <span *ngIf="loginForm.get('more').get('mail').errors?.validEmail">Email need to be valid.</span>
+  </div>
+  <button type="button" (click)="reset()">Reset</button>
+  <button type="button" (click)="toggleName()">Toggle name</button>
+  <button [disabled]="loginForm.invalid">Submit</button> <!-- disabled in case of invalidity -->
+</form>
